@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: #fafaf7;
+  --ink: #0f172a;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Subtle grid + radial glow for hero */
+.hero-bg {
+  background-image:
+    radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      rgba(79, 70, 229, 0.10),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 30% at 90% 10%,
+      rgba(244, 114, 182, 0.07),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fafaf7 100%);
+}
+
+/* Fancy text gradient for headline accents */
+.text-gradient {
+  background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0.04) 0%,
+    rgba(15, 23, 42, 0.08) 40%,
+    rgba(15, 23, 42, 0.04) 80%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 0.5rem;
+}
+
+/* Smooth focus ring */
+*:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
