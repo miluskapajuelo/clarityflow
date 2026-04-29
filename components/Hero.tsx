@@ -55,11 +55,10 @@ export function Hero() {
                   Your messy notes
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                  Q3 launch — design needs a final pass, marketing copy still
-                  open. Decided to drop the dark mode for v1. Risk: the API
-                  team is blocked on auth. Need to follow up with Sara about
-                  pricing tiers by Friday. Urgent: confirm budget with
-                  finance.
+                  Planning the next phase of a project, but a few things are still unclear. The general direction is defined,
+                  but we need to finalize timelines and confirm priorities. I should follow up with the team to get updates
+                  on pending tasks and make sure everyone is aligned. There’s also some concern about delays if key decisions
+                  aren’t made soon. Need to organize what’s most important and decide what to focus on first.
                 </p>
               </div>
               <div className="p-6 text-left bg-gradient-to-br from-white to-indigo-50/40">

@@ -10,13 +10,10 @@ import type { ClarityMode, ClarityOutput } from "@/lib/types";
 
 type ResultState = "idle" | "loading" | "ready" | "error";
 
-const SAMPLE_NOTE = `Q3 launch retro — design review went OK but copy still feels off.
-Decided to drop the dark mode for v1 to ship sooner.
-Risk: API team is blocked on auth, depends on the SSO migration.
-Need to follow up with Sara about pricing tiers by Friday.
-Urgent: confirm Q3 budget with finance before Monday.
-Let's also schedule a 30-min sync with marketing next week to align on launch copy.
-Worried about onboarding — current funnel drops 40% at step 2.`;
+const SAMPLE_NOTE = `Planning the next phase of a project, but a few things are still unclear. The general direction is defined, 
+  but we need to finalize timelines and confirm priorities. I should follow up with the team to get updates 
+  on pending tasks and make sure everyone is aligned. There’s also some concern about delays if key decisions 
+  aren’t made soon. Need to organize what’s most important and decide what to focus on first.`;
 
 export function WorkspaceForm() {
   const [input, setInput] = React.useState("");
