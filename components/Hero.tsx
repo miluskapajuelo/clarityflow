@@ -69,29 +69,25 @@ export function Hero() {
                   <li className="flex gap-2">
                     <span className="text-emerald-500">✓</span>
                     <span className="text-ink">
-                      <span className="font-medium">Decision:</span> Drop dark
-                      mode for v1.
+                      <span className="font-medium">Decision:</span> Finalize project timelines...
                     </span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-indigo-500">→</span>
                     <span className="text-ink">
-                      <span className="font-medium">Action:</span> Follow up
-                      with Sara on pricing tiers by Friday.
+                      <span className="font-medium">Action:</span> Follow up with the team for status...
                     </span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-amber-500">!</span>
                     <span className="text-ink">
-                      <span className="font-medium">Risk:</span> API team
-                      blocked on auth.
+                      <span className="font-medium">Risk:</span> Delays in decision-making could slow down the project...
                     </span>
                   </li>
                   <li className="flex gap-2">
                     <span className="text-rose-500">★</span>
                     <span className="text-ink">
-                      <span className="font-medium">Priority:</span> Confirm
-                      budget with finance.
+                      <span className="font-medium">Priority:</span> Confirm project timelines...
                     </span>
                   </li>
                 </ul>

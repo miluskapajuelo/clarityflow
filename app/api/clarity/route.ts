@@ -5,6 +5,18 @@ import { SYSTEM_PROMPT, buildUserMessage } from "@/lib/prompts";
 
 const client = new OpenAI();
 
+const DEMO_LIMIT = 2;
+// In-memory counter per IP. Resets on server restart — intentional for demo mode.
+const usageMap = new Map<string, number>();
+
+function getClientIp(req: NextRequest): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown"
+  );
+}
+
 const OUTPUT_SCHEMA = {
   type: "object",
   properties: {
@@ -20,6 +32,16 @@ const OUTPUT_SCHEMA = {
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    const used = usageMap.get(ip) ?? 0;
+
+    if (used >= DEMO_LIMIT) {
+      return NextResponse.json(
+        { error: "Demo limit reached", demoLimit: true },
+        { status: 429 },
+      );
+    }
+
     const { input, mode } = (await request.json()) as {
       input: string;
       mode: ClarityMode;
@@ -28,6 +50,8 @@ export async function POST(request: NextRequest) {
     if (!input?.trim()) {
       return NextResponse.json({ error: "Input is required" }, { status: 400 });
     }
+
+    usageMap.set(ip, used + 1);
 
     const response = await client.chat.completions.create({
       model: "gpt-4o-mini",

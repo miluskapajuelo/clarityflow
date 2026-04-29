@@ -353,6 +353,13 @@ export function generateClarityOutput(
   };
 }
 
+export class DemoLimitError extends Error {
+  constructor() {
+    super("Demo limit reached");
+    this.name = "DemoLimitError";
+  }
+}
+
 export async function generateClarityOutputAsync(
   input: string,
   mode: ClarityMode,
@@ -365,6 +372,9 @@ export async function generateClarityOutputAsync(
 
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
+    if ((err as { demoLimit?: boolean }).demoLimit) {
+      throw new DemoLimitError();
+    }
     throw new Error(
       (err as { error?: string }).error ?? "Failed to process notes.",
     );

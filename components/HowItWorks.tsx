@@ -26,7 +26,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28"
+      className="mx-auto max-w-6xl px-5 sm:px-8 pb-20 py-10 sm:py-10"
     >
       <div className="text-center">
         <p className="text-sm font-medium text-accent uppercase tracking-wider">

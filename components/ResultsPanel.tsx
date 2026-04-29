@@ -6,7 +6,7 @@ import { ResultCard } from "./ResultCard";
 import { CopyButton } from "./CopyButton";
 
 interface ResultsPanelProps {
-  state: "idle" | "loading" | "ready" | "error";
+  state: "idle" | "loading" | "ready" | "error" | "demo-limit";
   result: ClarityOutput | null;
   errorMessage?: string | null;
 }
@@ -18,6 +18,10 @@ export function ResultsPanel({ state, result, errorMessage }: ResultsPanelProps)
 
   if (state === "loading") {
     return <LoadingState />;
+  }
+
+  if (state === "demo-limit") {
+    return <DemoLimitBanner />;
   }
 
   if (state === "error") {
@@ -97,6 +101,24 @@ export function ResultsPanel({ state, result, errorMessage }: ResultsPanelProps)
           emptyHint="Nothing flagged as urgent."
         />
       </div>
+    </div>
+  );
+}
+
+function DemoLimitBanner() {
+  return (
+    <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-8 text-center">
+      <div className="mx-auto h-12 w-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+      </div>
+      <h3 className="text-base font-semibold text-amber-900">Demo limit reached</h3>
+      <p className="mt-2 text-sm text-amber-700 max-w-xs mx-auto">
+        You&apos;ve used your 2 free AI analyses. Full access is coming soon.
+      </p>
     </div>
   );
 }

@@ -5,10 +5,10 @@ import { Button } from "./Button";
 import { Textarea } from "./Textarea";
 import { ModeSelector } from "./ModeSelector";
 import { ResultsPanel } from "./ResultsPanel";
-import { generateClarityOutputAsync } from "@/lib/generateClarity";
+import { generateClarityOutputAsync, DemoLimitError } from "@/lib/generateClarity";
 import type { ClarityMode, ClarityOutput } from "@/lib/types";
 
-type ResultState = "idle" | "loading" | "ready" | "error";
+type ResultState = "idle" | "loading" | "ready" | "error" | "demo-limit";
 
 const SAMPLE_NOTE = `Planning the next phase of a project, but a few things are still unclear. The general direction is defined, 
   but we need to finalize timelines and confirm priorities. I should follow up with the team to get updates 
@@ -48,6 +48,10 @@ export function WorkspaceForm() {
       setResult(out);
       setState("ready");
     } catch (err) {
+      if (err instanceof DemoLimitError) {
+        setState("demo-limit");
+        return;
+      }
       setError(
         err instanceof Error
           ? err.message
